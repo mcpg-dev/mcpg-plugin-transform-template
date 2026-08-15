@@ -1,0 +1,30 @@
+[package]
+name = "mcpg-plugin-transform-template"
+version = "0.1.0-alpha.15"
+license = "Apache-2.0"
+edition = "2024"
+description = """
+Template-engine transform plugin for mcpg. Reshapes a JSON value by rendering
+an operator-supplied MiniJinja template with the value as context — emit a
+formatted string (e.g. a human-readable summary of a tool result) or, with
+`output: json`, render JSON text that is parsed back into a structured value.
+Usable as a global pre/post-dispatch transform and as a pipeline
+`plugin_transform` step. Pure compute — no I/O; the gateway core never depends
+on it.
+"""
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+default = []
+cdylib-export = []
+static-firstparty = []
+
+[dependencies]
+mcpg-plugin-protocol = { git = "https://github.com/mcpg-dev/mcpg-plugin-protocol", tag = "v0.1.0-beta.13", version = "=0.1.0-beta.13" }
+mcpg-plugin-sdk      = { git = "https://github.com/mcpg-dev/mcpg-plugin-sdk", tag = "v0.1.0-beta.13", version = "=0.1.0-beta.13", features = ["static-firstparty"] }
+serde      = { version = "1", features = ["derive"] }
+serde_json = "1"
+# Pure-Rust Jinja2-style template engine (Apache-2.0). No I/O / network.
+minijinja = "2"

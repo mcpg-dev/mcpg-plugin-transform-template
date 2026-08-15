@@ -1,0 +1,17 @@
+schema: mcpg.dev/plugin/v1
+id: dev.mcpg.transform.template
+name: Template Transform
+license: Apache-2.0
+description: |
+  Reshapes a JSON value by rendering an operator-supplied MiniJinja (Jinja2-
+  style) template with the value as the template context. `output: string`
+  (default) yields the rendered text as a JSON string — e.g. a human-readable
+  summary of a tool result; `output: json` parses the rendered text back into a
+  structured JSON value for JSON→JSON reshaping. As a global transform it
+  reshapes tool arguments (pre-dispatch) and/or results (post-dispatch); as a
+  pipeline `plugin_transform` step it reshapes the previous step's output. An
+  optional JSON Pointer (`pointer`) targets a sub-field. Pure compute — no I/O.
+class: transform
+runtime: native-cdylib-v1
+protocol_version: "1.0"
+required_capabilities: []
