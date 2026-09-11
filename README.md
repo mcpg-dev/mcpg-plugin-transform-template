@@ -30,7 +30,7 @@ named by a pipeline `plugin_transform` step for a single binding.
 plugins:
   - id: dev.mcpg.transform.template
     class: transform
-    source: { oci: ghcr.io/mcpg-dev/source-code/plugins/transform-template:protocol-1 }
+    source: { oci: ghcr.io/mcpg-dev/plugins/transform-template }
     config:
       phase: result
       pointer: /structuredContent
